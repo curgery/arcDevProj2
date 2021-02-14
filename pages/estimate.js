@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+// import ReactGA from 'react-ga';
 import Head from 'next/head';
 import axios from 'axios';
 import { cloneDeep } from 'lodash';
@@ -603,6 +604,11 @@ export default function Estimate() {
 
   const sendEstimate = () => {
     setLoading(true);
+    // ReactGA.event({
+    //   category: 'Estimate',
+    //   action: 'Estimate Sent',
+    // });
+
     axios
       .get(
         'https://us-central1-material-ui-arcdev.cloudfunctions.net/sendMail',
@@ -963,7 +969,7 @@ export default function Estimate() {
         </Grid>
         <Grid item>
           <Button
-            variance='contained'
+            variant='contained'
             disabled={estimateDisabled()}
             className={classes.estimateButton}
             onClick={() => {
@@ -973,6 +979,12 @@ export default function Estimate() {
               getFeatures();
               getCustomFeatures();
               getCategory();
+              {
+                /* ReactGA.event({
+                category: 'Estimate',
+                action: 'Estimate Checked',
+              }); */
+              }
             }}
           >
             Get Estimate
@@ -980,12 +992,12 @@ export default function Estimate() {
         </Grid>
       </Grid>
       <Dialog
-        style={{ zIndex: 1302 }}
         open={dialogOpen}
         onClose={() => setDialogOpen(false)}
         fullWidth
         maxWidth='lg'
         fullScreen={matchesSM}
+        style={{ zIndex: 1302 }}
       >
         <Grid container justify='center'>
           <Grid item style={{ marginTop: '1em' }}>

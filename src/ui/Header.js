@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import ReactGA from 'react-ga';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
@@ -138,6 +139,8 @@ export default function Header(props) {
   const [anchorEl, setAnchorEl] = useState(null);
   const [openMenu, setOpenMenu] = useState(false);
 
+  const [previousURL, setPreviousURL] = useState('');
+
   const handleChange = (e, newValue) => {
     props.setValue(newValue);
   };
@@ -198,6 +201,10 @@ export default function Header(props) {
   ];
 
   useEffect(() => {
+    if (previousURL !== window.location.pathname) {
+      setPreviousURL(window.name.pathname);
+      ReactGA.pageview(window.location.pathname + window.location.search);
+    }
     [...menuOptions, ...routes].forEach((route) => {
       switch (window.location.pathname) {
         case `${route.link}`:
@@ -249,7 +256,13 @@ export default function Header(props) {
         variant='contained'
         color='secondary'
         className={classes.button}
-        onClick={() => props.setValue(false)}
+        onClick={() => {
+          props.setValue(5),
+            ReactGA.event({
+              category: 'Estimate',
+              action: 'Desktop Header Pressed',
+            });
+        }}
       >
         Free Estimate
       </Button>
@@ -315,25 +328,15 @@ export default function Header(props) {
               </ListItemText>
             </ListItem>
           ))}
-          {/* <ListItem onClick={() => {setOpenDrawer(false); setValue(0)}}  divider button component={Link} to="/" selected={value === 0}>
-                    <ListItemText className={value === 0 ? [classes.drawerItem, classes.drawerItemSelected] : classes.drawerItem} disableTypography>Home</ListItemText>
-                </ListItem>
-                <ListItem onClick={() => {setOpenDrawer(false); setValue(1)}}  divider button component={Link} to="/services" selected={value === 1}>
-                    <ListItemText className={value === 1 ? [classes.drawerItem, classes.drawerItemSelected] : classes.drawerItem} disableTypography>Services</ListItemText>
-                </ListItem>
-                <ListItem onClick={() => {setOpenDrawer(false); setValue(2)}}  divider button component={Link} to="/revolution" selected={value === 2}>
-                    <ListItemText className={value === 2 ? [classes.drawerItem, classes.drawerItemSelected] : classes.drawerItem} disableTypography>The Revolution</ListItemText>
-                </ListItem>
-                <ListItem onClick={() => {setOpenDrawer(false); setValue(3)}}  divider button component={Link} to="/about" selected={value === 3}>
-                    <ListItemText className={value === 3 ? [classes.drawerItem, classes.drawerItemSelected] : classes.drawerItem} disableTypography>About Us</ListItemText>
-                </ListItem>
-                <ListItem onClick={() => {setOpenDrawer(false); setValue(4)}}  divider button component={Link} to="/contact" selected={value === 4}>
-                    <ListItemText className={value === 4 ? [classes.drawerItem, classes.drawerItemSelected] : classes.drawerItem} disableTypography>Contact Us</ListItemText>
-                </ListItem> */}
+
           <ListItem
             onClick={() => {
               setOpenDrawer(false);
-              props.setValue(5);
+              props.setValue(5),
+                ReactGA.event({
+                  Category: 'Estimate',
+                  action: 'Mobile Header Pressed',
+                });
             }}
             divider
             button

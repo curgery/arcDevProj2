@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactGA from 'react-ga';
 import Head from 'next/head';
 import Lottie from 'react-lottie';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
@@ -186,7 +187,13 @@ export default function LandingPage(props) {
                     href='/estimate'
                     className={classes.estimateButton}
                     variant='contained'
-                    onClick={() => props.setValue(5)}
+                    onClick={() => {
+                      props.setValue(5);
+                      ReactGA.event({
+                        category: 'Estimate',
+                        action: 'Home Page Pressed',
+                      });
+                    }}
                   >
                     Free Estimate
                   </Button>

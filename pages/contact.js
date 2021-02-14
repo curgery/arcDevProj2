@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import ReactGA from 'react-ga';
 import Head from 'next/head';
 import axios from 'axios';
 import Link from '../src/Link';
@@ -14,15 +15,6 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import Snackbar from '@material-ui/core/Snackbar';
 
 import ButtonArrow from '../src/ui/ButtonArrow';
-
-// import background from '../assets/background.jpg';
-// import mobileBackground from '../assets/mobileBackground.jpg';
-// import phoneIcon from '../assets/phone.svg';
-// import emailIcon from '../assets/email.svg';
-// import airplane from '../assets/send.svg';
-// import DialogActions from '@material-ui/core/DialogActions';
-// import DialogContentText from '@material-ui/core/DialogContentText';
-// import DialogTitle from '@material-ui/core/DialogTitle';
 
 const useStyles = makeStyles((theme) => ({
   background: {
@@ -147,6 +139,10 @@ export default function Contact(props) {
 
   const onConfirm = () => {
     setLoading(true);
+    ReactGA.event({
+      category: 'Message',
+      action: 'Sent Message',
+    });
     axios
       .get(
         'https://us-central1-material-ui-arcdev.cloudfunctions.net/sendMail',
@@ -524,7 +520,13 @@ export default function Contact(props) {
             href='/estimate'
             variant='contained'
             className={classes.estimateButton}
-            onClick={() => props.setValue(5)}
+            onClick={() => {
+              props.setValue(5);
+              React.GA.event({
+                category: 'Estimate',
+                action: 'Contact Page Pressed',
+              });
+            }}
           >
             Free Estimate
           </Button>
