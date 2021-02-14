@@ -604,10 +604,10 @@ export default function Estimate() {
 
   const sendEstimate = () => {
     setLoading(true);
-    // ReactGA.event({
-    //   category: 'Estimate',
-    //   action: 'Estimate Sent',
-    // });
+    ReactGA.event({
+      category: 'Estimate',
+      action: 'Estimate Sent',
+    });
 
     axios
       .get(
@@ -663,8 +663,18 @@ export default function Estimate() {
     let disabled = true;
 
     const emptySelections = questions
+      .filter(
+        (question) => question.title !== 'Which featurres do you expect to use?'
+      )
       .map((question) => question.options.filter((option) => option.selected))
       .filter((question) => question.length === 0);
+
+    const featureSelected = questions
+      .filter(
+        (question) => question.title === 'Which features do you expect to use?'
+      )
+      .map((question) => question.options.filter((option) => option.selected))
+      .filter((selections) => selections.length > 0);
 
     if (questions.length === 2) {
       if (emptySelections.length === 1) {
@@ -674,17 +684,11 @@ export default function Estimate() {
       // * recall: questions array is in a default state at this point!
       disabled = true;
     } else {
-      if (
-        emptySelections.length < 3 &&
-        questions[questions.length - 1].options.filter(
-          (option) => option.selected
-        ).length > 0
-      ) {
+      if (emptySelections.length === 1 && featureSelected.length > 0) {
         disabled = false;
       }
+      return disabled;
     }
-
-    return disabled;
   };
 
   const softwareSelection = (
