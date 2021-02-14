@@ -9,7 +9,7 @@ import Header from '../src/ui/Header';
 import Footer from '../src/ui/Footer';
 // import { render } from 'react-dom';
 
-ReactGA.initialize('UA-189717144-1');
+import ReactGA from '';
 
 export default class MyApp extends App {
   constructor(props) {

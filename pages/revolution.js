@@ -98,7 +98,7 @@ export default function Revolution() {
             }}
           />
         </Grid>
-        <Grid container direction='column' lg style={{ maxWidth: '40em' }}>
+        <Grid item container direction='column' lg style={{ maxWidth: '40em' }}>
           <Grid item>
             <Typography
               variant='h4'
