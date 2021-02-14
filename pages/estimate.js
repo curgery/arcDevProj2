@@ -604,10 +604,10 @@ export default function Estimate() {
 
   const sendEstimate = () => {
     setLoading(true);
-    ReactGA.event({
-      category: 'Estimate',
-      action: 'Estimate Sent',
-    });
+    // ReactGA.event({
+    //   category: 'Estimate',
+    //   action: 'Estimate Sent',
+    // });
 
     axios
       .get(

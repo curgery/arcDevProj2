@@ -238,28 +238,6 @@ export default function Header(props) {
         checkPath();
       }
     }
-    // [...menuOptions, ...routes].forEach((route) => {
-    //   switch (window.location.pathname) {
-    //     case `${route.link}`:
-    //       if (props.value !== route.activeIndex) {
-    //         props.setValue(route.activeIndex);
-    //         if (
-    //           route.selectedIndex &&
-    //           route.selectedIndex !== props.selectedIndex
-    //         ) {
-    //           props.setSelectedIndex(route.selectedIndex);
-    //         }
-    //       }
-    //       break;
-    //     case '/estimate':
-    //       if (props.setValue !== false) {
-    //         props.setValue(false);
-    //       }
-    //       break;
-    //     default:
-    //       break;
-    //   }
-    // });
   }, [props.value, menuOptions, props.selectedIndex, routes, props]);
 
   Router.events.on('routeChangeComplete', (url) => {
