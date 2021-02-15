@@ -347,11 +347,11 @@ export default function Header(props) {
           <ListItem
             onClick={() => {
               setOpenDrawer(false);
-              props.setValue(5),
-                ReactGA.event({
-                  Category: 'Estimate',
-                  action: 'Mobile Header Pressed',
-                });
+              props.setValue(5);
+              ReactGA.event({
+                category: 'Estimate',
+                action: 'Mobile Header Pressed',
+              });
             }}
             divider
             button

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-// import ReactGA from 'react-ga';
+import ReactGA from 'react-ga';
 import Head from 'next/head';
 import axios from 'axios';
 import { cloneDeep } from 'lodash';
@@ -604,10 +604,10 @@ export default function Estimate() {
 
   const sendEstimate = () => {
     setLoading(true);
-    // ReactGA.event({
-    //   category: 'Estimate',
-    //   action: 'Estimate Sent',
-    // });
+    ReactGA.event({
+      category: 'Estimate',
+      action: 'Estimate Sent',
+    });
 
     axios
       .get(
@@ -983,12 +983,10 @@ export default function Estimate() {
               getFeatures();
               getCustomFeatures();
               getCategory();
-              {
-                /* ReactGA.event({
+              ReactGA.event({
                 category: 'Estimate',
                 action: 'Estimate Checked',
-              }); */
-              }
+              });
             }}
           >
             Get Estimate

@@ -194,9 +194,7 @@ export default function LandingPage(props) {
                         action: 'Home Page Pressed',
                       });
                     }}
-                  >
-                    Free Estimate
-                  </Button>
+                  ></Button>
                 </Grid>
                 <Grid item>
                   <Button
