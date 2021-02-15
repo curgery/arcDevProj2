@@ -7,9 +7,8 @@ import { ThemeProvider } from '@material-ui/core/styles';
 import Theme from '../src/ui/Theme';
 import Header from '../src/ui/Header';
 import Footer from '../src/ui/Footer';
-// import { render } from 'react-dom';
 
-import ReactGA from '';
+ReactGA.initialize('');
 
 export default class MyApp extends App {
   constructor(props) {
@@ -17,7 +16,6 @@ export default class MyApp extends App {
 
     this.state = { value: 0, selectedIndex: 0 };
   }
-  // const { Component, pageProps } = props;
 
   setValue = (index) => {
     this.setState({ value: index });
