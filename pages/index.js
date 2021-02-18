@@ -172,7 +172,7 @@ export default function LandingPage(props) {
           >
             <Grid sm item className={classes.heroTextContainer}>
               <Typography variant='h2' align='center'>
-                Bring Robust Expansion
+                Bringing Robust Expansion
                 <br />
                 To Innovative Technology
               </Typography>
@@ -194,7 +194,9 @@ export default function LandingPage(props) {
                         action: 'Home Page Pressed',
                       });
                     }}
-                  ></Button>
+                  >
+                    Free Estimate
+                  </Button>
                 </Grid>
                 <Grid item>
                   <Button
