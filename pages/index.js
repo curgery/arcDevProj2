@@ -172,7 +172,7 @@ export default function LandingPage(props) {
           >
             <Grid sm item className={classes.heroTextContainer}>
               <Typography variant='h2' align='center'>
-                Bringing Robust Expansion
+                Bring Robust Expansion
                 <br />
                 To Innovative Technology
               </Typography>
