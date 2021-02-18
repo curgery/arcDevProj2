@@ -8,7 +8,7 @@ import Theme from '../src/ui/Theme';
 import Header from '../src/ui/Header';
 import Footer from '../src/ui/Footer';
 
-ReactGA.initialize('UA-189726622-1');
+ReactGA.initialize('');
 
 export default class MyApp extends App {
   constructor(props) {
