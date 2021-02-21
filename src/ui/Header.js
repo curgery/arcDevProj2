@@ -402,7 +402,7 @@ export default function Header(props) {
                 className={classes.logo}
               />
               <img
-                src='/assets/img_3044.jpg'
+                src='/assets/img3044.jpg'
                 alt='avatar logo'
                 className={classes.logo}
               />
